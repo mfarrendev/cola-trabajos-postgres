@@ -317,7 +317,7 @@ export class Cola {
       if (r.creado) encolados++;
       const siguiente = siguienteEjecucion(t.expresion, ahora > instante ? ahora : instante);
       await this.db.query(
-        `UPDATE cron_tareas SET proxima = $3, ultima = $2 WHERE nombre = $1 AND proxima = $2`,
+        `UPDATE cron_tareas SET proxima = $3, ultima = $2 WHERE nombre = $1 AND date_trunc('milliseconds', proxima) = $2`,
         [t.nombre, instante.toISOString(), siguiente.toISOString()],
       );
     }
