@@ -23,8 +23,8 @@ export async function hayPostgres(): Promise<boolean> {
 
 export const DISPONIBLE = await hayPostgres();
 if (!DISPONIBLE) {
-  console.warn(
-    `\n[integración] AVISO: no hay Postgres en ${URL_PG}; se saltan las pruebas de integración.\n` +
+  process.stderr.write(
+    `\n[integración] AVISO: no hay Postgres en ${URL_PG.replace(/\/\/([^:@/]+):[^@]*@/, "//$1:***@")}; se saltan las pruebas de integración.\n` +
       "  docker run -d --name pg-cola-demo -e POSTGRES_PASSWORD=local -p 127.0.0.1:55511:5432 postgres:17-alpine\n",
   );
 }
