@@ -1,0 +1,37 @@
+{
+  "name": "cola-trabajos-postgres",
+  "version": "0.1.0",
+  "description": "Cola de trabajos en segundo plano sobre Postgres (SKIP LOCKED, leases, reintentos, cron), sin Redis",
+  "type": "module",
+  "license": "MIT",
+  "author": "Max Farren",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "sql"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:unit": "vitest run test/unit",
+    "test:integracion": "vitest run test/integracion",
+    "bench": "tsx bench/bench.ts",
+    "ejemplo": "tsx ejemplo/correo.ts"
+  },
+  "dependencies": {
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.10",
+    "@types/node": "^26.6.5",
+    "@types/pg": "^8.23.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}
